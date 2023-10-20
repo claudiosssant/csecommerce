@@ -1,5 +1,6 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { AuthOptions } from "next-auth";
+import GoogleProvider from "next-auth/providers/google"
 import { prismaClient } from "./prisma";
 
 export const authOptions: AuthOptions = {
@@ -12,6 +13,5 @@ export const authOptions: AuthOptions = {
     ],
   };
 
-function GoogleProvider(arg0: { clientId: string; clientSecret: string; }): import("next-auth/providers/index").Provider {
-  throw new Error("Function not implemented.");
-}
+
+
