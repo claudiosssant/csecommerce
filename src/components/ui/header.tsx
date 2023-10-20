@@ -17,6 +17,10 @@ const Header = () => {
   };
   return (
     <Card className="flex items-center justify-between bg-slate-50 p-[1.875rem]">
+      <Button size="icon" variant="outline">
+        <ShoppingCart />
+      </Button>
+      <h1 className="text-lg font-semibold text-gray-900">CS Store</h1>
       <Sheet>
         <SheetTrigger asChild>
           <Button size="icon" variant="outline">
@@ -24,7 +28,7 @@ const Header = () => {
           </Button>
         </SheetTrigger>
 
-        <SheetContent side="left">
+        <SheetContent side="right">
           <SheetHeader className="items-center text-xl font-bold">
             Menu
           </SheetHeader>
@@ -88,11 +92,6 @@ const Header = () => {
         </SheetContent>
       </Sheet>
 
-      <h1 className="text-lg font-semibold text-gray-900">CS Store</h1>
-
-      <Button size="icon" variant="outline">
-        <ShoppingCart />
-      </Button>
     </Card>
   );
 };
