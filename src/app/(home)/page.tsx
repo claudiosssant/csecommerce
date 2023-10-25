@@ -1,43 +1,48 @@
-
 import Image from "next/image";
 import Categories from "./components/products-categories";
 import { prismaClient } from "@/lib/prisma";
 import ProductList from "./components/list";
+import SectionTitle from "./components/section-title";
+import OfferBanner from "./components/offer-banner";
 
 export default async function Home() {
   const deals = await prismaClient.product.findMany({
     where: {
-      discountPercentage:{
+      discountPercentage: {
         gt: 0,
+      },
+    },
+  });
+
+  const keyboards = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "keyboards",
       },
     },
   });
   return (
     <div className="">
-      <Image
+      <OfferBanner
         src="/6026286.jpg"
-        width={0}
-        height={0}
         alt="24 hours online offer, blackfriday, up to 70% off discount, use the code blackfridayoffer and shop now"
-        className="w-full h-auto rounded-xl"
-        sizes="100vw"
       />
       <div className="mt-8 px-5">
         <Categories />
       </div>
 
       <div className="mt-8">
-        <p className="mb-3 font-bold uppercase pl-5">Ofertas</p>
+        <SectionTitle>Ofertas</SectionTitle>
         <ProductList products={deals} />
       </div>
-      <Image
+      <OfferBanner
         src="/5972157.jpg"
-        width={0}
-        height={0}
         alt="24 hours online offer, blackfriday, up to 70% off discount, use the code blackfridayoffer and shop now"
-        className="w-full h-auto rounded-xl"
-        sizes="100vw"
       />
+      <div className="mt-8">
+        <SectionTitle>Teclados</SectionTitle>
+        <ProductList products={keyboards} />
+      </div>
     </div>
   );
 }
