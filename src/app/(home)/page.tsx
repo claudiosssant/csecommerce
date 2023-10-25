@@ -15,7 +15,7 @@ export default async function Home() {
   return (
     <div className="">
       <Image
-        src="/115_BLACK_FRIDAY.jpg"
+        src="/6026286.jpg"
         width={0}
         height={0}
         alt="24 hours online offer, blackfriday, up to 70% off discount, use the code blackfridayoffer and shop now"
@@ -26,9 +26,18 @@ export default async function Home() {
         <Categories />
       </div>
 
-      <div>
+      <div className="mt-8">
+        <p className="mb-3 font-bold uppercase pl-5">Ofertas</p>
         <ProductList products={deals} />
       </div>
+      <Image
+        src="/5972157.jpg"
+        width={0}
+        height={0}
+        alt="24 hours online offer, blackfriday, up to 70% off discount, use the code blackfridayoffer and shop now"
+        className="w-full h-auto rounded-xl"
+        sizes="100vw"
+      />
     </div>
   );
 }
