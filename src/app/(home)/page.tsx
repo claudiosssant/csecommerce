@@ -29,7 +29,7 @@ export default async function Home() {
     },
   });
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 py-8">
       <OfferBanner
         src="/6026286.jpg"
         alt="24 hours online offer, blackfriday, up to 70% off discount, use the code blackfridayoffer and shop now"

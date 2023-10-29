@@ -23,7 +23,7 @@ export default function RootLayout({
        <div className='flex flex-col h-full'>
         <AuthProvider>
           <Header />
-            <div>
+            <div className='flex-1'>
               {children}
             </div>
           <Footer />
