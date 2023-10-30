@@ -1,27 +1,40 @@
 import { Badge } from "@/components/ui/badge";
+import ProductItem from "@/components/ui/product-item";
+import { CATEGORY_ICON } from "@/constants/category-icon";
+import { computeProductTotalPrice } from "@/helpers/product";
 import { prismaClient } from "@/lib/prisma";
-import { List } from "react-feather";
 
-const CategoyProducts = async ({params}: any) => {
-  const products = await prismaClient.product.findMany({
+const CategoryProducts = async ({ params }: any) => {
+  const category = await prismaClient.category.findFirst({
     where: {
-      category: {
-        slug: params.slug
-      }
-    }
-  })
+      slug: params.slug,
+    },
+    include: {
+      products: true,
+    },
+  });
+
+  if (!category) {
+    return null;
+  }
+
   return (
-    <div>
-      <Badge className=" w-fit border-2 gap-1 px-3 py-1 text-base uppercase">
-        <List size={16} />
-        {params.slug}
+    <div className="flex flex-col gap-8 p-5">
+      <Badge className=" w-fit gap-1 border-2 px-3 py-1 text-base uppercase">
+        {CATEGORY_ICON[params.slug as keyof typeof CATEGORY_ICON]}
+        {category.name}
       </Badge>
 
       <div className="grid grid-cols-2 gap-8">
-        
+        {category.products.map((product) => (
+          <ProductItem
+            key={product.id}
+            product={computeProductTotalPrice(product)}
+          />
+        ))}
       </div>
     </div>
   );
 };
- 
-export default CategoyProducts;
+
+export default CategoryProducts;
