@@ -3,9 +3,10 @@
 import { Button } from "./button";
 import { Card, CardContent } from "./card";
 import { ShoppingCart, Menu, User, Gift, List, Home } from "react-feather";
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
+import Link from "next/link";
 
 const Header = () => {
   const { status, data } = useSession();
@@ -20,7 +21,9 @@ const Header = () => {
       <Button size="icon" variant="outline">
         <ShoppingCart />
       </Button>
+     <Link href="/">
       <h1 className="text-lg font-semibold text-gray-900">CS Store</h1>
+     </Link>
       <Sheet>
         <SheetTrigger asChild>
           <Button size="icon" variant="outline">
@@ -81,13 +84,17 @@ const Header = () => {
               Offers
             </Button>
 
-            <Button
-              variant="outline"
-              className=" w-full justify-center gap-2 font-bold"
-            >
-              <List />
-              Catalog
-            </Button>
+            <SheetClose asChild>
+              <Link href={"/catalog"}>
+                <Button
+                  variant="outline"
+                  className=" w-full justify-center gap-2 font-bold"
+                >
+                  <List />
+                  Catalog
+                </Button>
+              </Link>
+            </SheetClose>
           </div>
         </SheetContent>
       </Sheet>
