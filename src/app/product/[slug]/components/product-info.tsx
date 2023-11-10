@@ -1,6 +1,9 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import { Product } from "@prisma/client";
+import { useState } from "react";
 import { ArrowDown } from "react-feather";
 
 interface ProductInfoProps {
@@ -15,9 +18,9 @@ interface ProductInfoProps {
   >
 }
 
-
-
 const ProductInfo = ({product: {name, basePrice, totalPrice, description, discountPercentage }} : ProductInfoProps) => {
+  const [quantity, setQuantity] = useState(1);
+  
   return ( 
     <div className="flex flex-col px-5">
       <h2 className="text-lg">{name}</h2>
@@ -30,6 +33,9 @@ const ProductInfo = ({product: {name, basePrice, totalPrice, description, discou
           </Badge>
         )}
       </div>
+      {discountPercentage > 0 && (
+        <p className="opacity-75 text-sm line-through">{basePrice.toFixed(2)}</p>
+      )}
     </div>
    );
 }
