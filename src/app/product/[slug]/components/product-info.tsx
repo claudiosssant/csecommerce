@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import DiscountBadge from "@/components/ui/discount-badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import { Product } from "@prisma/client";
 import { useState } from "react";
@@ -36,9 +37,9 @@ const ProductInfo = ({product: {name, basePrice, totalPrice, description, discou
       <div className="flex items-center gap-1">
         <h1 className="text-xl font-bold gap-2">R$ {totalPrice.toFixed(2)}</h1>
         {discountPercentage > 0 && (
-          <Badge className="px-2 pt-[2px]">
-            <ArrowDown size={16}/> {discountPercentage}%
-          </Badge>
+          <DiscountBadge>
+            {discountPercentage}
+          </DiscountBadge>
         )}
       </div>
       {discountPercentage > 0 && (
