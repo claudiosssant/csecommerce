@@ -3,15 +3,18 @@ import ProductImages from "./components/product-images";
 import ProductInfo from "./components/product-info";
 import { computeProductTotalPrice } from "@/helpers/product";
 import ProductList from "@/components/ui/list";
+import SectionTitle from "@/components/ui/section-title";
 
 interface ProductDetailsPageProps {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
 }
 
-const ProductDetailsPage = async ({params: {slug}}: ProductDetailsPageProps) => {
-  const product = await prismaClient.product.findFirst ({
+const ProductDetailsPage = async ({
+  params: { slug },
+}: ProductDetailsPageProps) => {
+  const product = await prismaClient.product.findFirst({
     where: {
       slug: slug,
     },
@@ -36,10 +39,13 @@ const ProductDetailsPage = async ({params: {slug}}: ProductDetailsPageProps) => 
     <div className="flex flex-col gap-8 pb-8">
       <ProductImages imageUrls={product.imageUrls} name={product.name} />
       <ProductInfo product={computeProductTotalPrice(product)} />
-      <ProductList products={product.category.products} />
+      
+      <div>
+        <SectionTitle>Produtos Recomendados</SectionTitle>
+        <ProductList products={product.category.products} />
+      </div>
     </div>
-  )
-  ;
-}
- 
+  );
+};
+
 export default ProductDetailsPage;
