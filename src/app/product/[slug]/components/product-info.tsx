@@ -60,7 +60,7 @@ const ProductInfo = ({product: {name, basePrice, totalPrice, description, discou
         <p className="opacity-60 text-sm text-justify">{description}</p>
       </div>
 
-      <Button className="mt-8 mb-10 uppercase font-bold">
+      <Button className="lg:w-1/5 mt-8 mb-10 uppercase font-bold">
         Adicionar ao carrinho
       </Button>
       
