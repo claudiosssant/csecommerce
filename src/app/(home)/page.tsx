@@ -31,7 +31,7 @@ export default async function Home() {
   return (
     <div className="flex flex-col gap-8 py-8">
       <OfferBanner
-        src="/6026286.jpg"
+        src="/5999432.jpg"
         alt="24 hours online offer, blackfriday, up to 70% off discount, use the code blackfridayoffer and shop now"
       />
       <div className="px-5">
@@ -43,7 +43,7 @@ export default async function Home() {
         <ProductList products={deals} />
       </div>
       <OfferBanner
-        src="/5972157.jpg"
+        src="/5999432.jpg"
         alt="24 hours online offer, blackfriday, up to 70% off discount, use the code blackfridayoffer and shop now"
       />
       <div>
