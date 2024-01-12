@@ -22,9 +22,9 @@ const CartItem = ({product}: CartItemProps) => {
         <div className="flex flex-col">
           <p className="">{product.name}</p>
           <div className="flex items-center gap-2">
-            <p className="font-bold"> R$ {product.totalPrice.toFixed(2)}</p>
+            <p className="font-bold text-sm"> R$ {product.totalPrice.toFixed(2)}</p>
             {product.discountPercentage > 0 &&(
-              <p className="opacity-75 line-through text-xs">R$ {product.discountPercentage.toFixed(2)}</p>
+              <p className="opacity-75 line-through text-xs">R$ {Number(product.basePrice).toFixed(2)}</p>
             )}
           </div>
         </div>
